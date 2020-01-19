@@ -7,4 +7,10 @@ const user = new User({ name: 'new record', age: 0 });
 
 //user.set({ name: 'new name', age: 999 });
 
-user.save();
+//user.save();
+
+user.events.on('change', () => {
+    console.log('chanege!');
+});
+
+user.events.trigger('change');
