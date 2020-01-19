@@ -40,9 +40,21 @@ export class User {
     }
 
     fetch(): void {
-        axios.get(home + "/users" + this.get('id'))
+        axios.get(home + "/users/" + this.get('id'))
             .then((response: AxiosResponse): void => {
                 this.set(response.data);
             });
+    }
+
+    save(): void {
+        const id = this.get('id');
+
+        if(this.get('id')) {
+            // put
+            axios.put(home + `/users/${this.get('id')}`, this.data);
+        } else {
+            // poset
+            axios.post(home + `/users`, this.data);
+        }
     }
 }

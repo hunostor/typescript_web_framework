@@ -1,9 +1,10 @@
 import { User } from './models/User';
-import axios from 'axios';
 
 export const home: string = 'http://localhost:3000';
 
-axios.post(home + "/users", {
-    name: "myname",
-    age: 20
-});
+const user = new User({ name: 'new record', age: 0 });
+//const user = new User({ id: 1 });
+
+//user.set({ name: 'new name', age: 999 });
+
+user.save();
